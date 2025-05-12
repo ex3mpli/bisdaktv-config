@@ -1,16 +1,29 @@
 # BISDAKTV Config (Hosted with Cloudflare Workers)
 
-This repo hosts the `config.json` file used for BISDAKTV.
+This repo hosts the `config.json` file for BISDAKTV, served through a secure Cloudflare Worker.
 
 ## 📂 Files
-- `config.json` – The main configuration for categories, channels, and DRM.
-- `worker.js` – Cloudflare Worker script that serves the JSON publicly.
+- `config.json`: Main channel and category list for OTT Navigator.
+- `worker.js`: Cloudflare Worker script that restricts access to OTT Navigator only.
 
-## 🌐 How to Access
-Once deployed using [Cloudflare Workers](https://workers.cloudflare.com/), your file will be available at:
+## 🌐 Public Access
 
-## 🚀 How It Works
-The Cloudflare Worker fetches the latest `config.json` from GitHub and returns it as JSON with the correct `Content-Type` headers.
+Once deployed, your Worker will be available at:
 
-## ✏️ Editing Config
-Edit `config.json` in the GitHub repo and it will automatically update on the Worker URL after a few seconds.
+
+This URL is only accessible via OTT Navigator.
+
+## 🛡 Access Control
+
+- Browser access will be denied (403 error).
+- OTT Navigator access is allowed (detected via User-Agent header).
+
+## 🛠 Usage
+
+1. Edit the `config.json` with your data.
+2. Deploy `worker.js` in your Cloudflare Worker.
+3. Use the Worker URL inside OTT Navigator.
+
+## ✏️ GitHub Repo
+
+- GitHub: [https://github.com/ex3mpli/bisdaktv-config](https://github.com/ex3mpli/bisdaktv-config)
